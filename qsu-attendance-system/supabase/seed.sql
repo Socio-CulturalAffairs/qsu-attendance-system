@@ -1,0 +1,4 @@
+-- After signing up users in Supabase Authentication, add their profile rows.
+-- Example:
+-- insert into public.profiles (id, full_name, email, role, organization)
+-- values ('AUTH-USER-UUID','Jay Mark R. Castillo','admin@example.com','admin','Socio-Cultural Services');

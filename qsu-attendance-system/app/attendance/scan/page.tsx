@@ -1,0 +1,4 @@
+'use client'
+import { useEffect,useRef,useState } from 'react'; import { Html5Qrcode } from 'html5-qrcode'; import { AuthGuard } from '@/components/AuthGuard';
+export default function ScanPage(){return <AuthGuard><Scanner/></AuthGuard>}
+function Scanner(){const [msg,setMsg]=useState('Point the camera at a practice QR code.');const scanner=useRef<Html5Qrcode|null>(null);useEffect(()=>{const s=new Html5Qrcode('reader');scanner.current=s;s.start({facingMode:'environment'},{fps:10,qrbox:{width:250,height:250}},text=>{window.location.href=text},()=>{}).catch(e=>setMsg('Camera could not start: '+e));return()=>{s.stop().catch(()=>{})}},[]);return <main className="container"><h1 className="title">Scan Attendance QR</h1><p className="subtitle">{msg}</p><div className="card"><div id="reader" style={{maxWidth:520,margin:'auto'}}/></div></main>}
